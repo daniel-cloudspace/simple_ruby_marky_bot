@@ -9,11 +9,11 @@ end
 def learn(words)
   links = words.each_cons(2).map {|p| p} 
   links.each do |word1, word2|
-    @brain[word1] = [] unless @brain.has_key? word1 
+    @brain[word1] ||= []
     @brain[word1].push word2
   end
   endword = words.last
-  @brain[endword] = [] unless @brain.has_key? endword
+  @brain[endword] ||= []
   @brain[endword].push nil 
 end
 
